@@ -12,7 +12,18 @@ message HelloReply {
   string message = 1;
 }
 
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string token = 1;
+  int64 expires_at = 2;
+}
+
 service Greeter {
+  rpc Login (LoginRequest) returns (LoginResponse) {}
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   rpc SayHelloStream (HelloRequest) returns (stream HelloReply) {}
 }
