@@ -22,8 +22,40 @@ message LoginResponse {
   int64 expires_at = 2;
 }
 
+message RegisterRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message LogoutRequest {
+  // Empty request
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ProfileRequest {
+  // Empty request
+}
+
+message ProfileResponse {
+  string username = 1;
+  string role = 2;
+  string message = 3;
+}
+
 service Greeter {
   rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+  rpc Logout (LogoutRequest) returns (LogoutResponse) {}
+  rpc GetProfile (ProfileRequest) returns (ProfileResponse) {}
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   rpc SayHelloStream (HelloRequest) returns (stream HelloReply) {}
 }
